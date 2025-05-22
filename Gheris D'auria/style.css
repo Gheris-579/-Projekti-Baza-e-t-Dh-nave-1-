@@ -1,0 +1,312 @@
+:root {
+    --primary-color: #E62117; /* Ngjyra kryesore e kuqe, si YouTube */
+    --secondary-color: #FF5A5F; /* Një nuancë më e çelur e së kuqes */
+    --accent-color: #2196F3; /* Një blu e fortë për thekse */
+    --text-dark: #000000; /* Tekst i errët */
+    --text-light: #000000; /* Tekst i lehtë */
+    --bg-main: #ffffff; /* Sfondi kryesor i lehtë */
+    --bg-card: #ffffff; /* Sfondi i kartave */
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Fonti bazë */
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif; /* Fonti për tituj */
+    color: var(--text-dark);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.header {
+    background-color: var(--background-dark); /* Ngjyrë e errët për header */
+    color: var(--text-light);
+    padding: 1.5em 0;
+    box-shadow: 0 4px 8px var(--shadow-medium);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.school-logo {
+    height: 60px; /* Madhësia e logos */
+    width: auto;
+    border-radius: 8px; /* Këndet e rrumbullakosura */
+    box-shadow: 0 0 10px var(--shadow-light);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--text-light);
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-link {
+    display: block;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Për efektin e linjës së poshtme */
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.nav-link:hover::before {
+    transform: translateX(0);
+}
+
+.main-content {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.section-card {
+    background-color: var(--bg-card);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-medium);
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 2em;
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.styled-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.styled-list li {
+    background-color: var(--bg-main);
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-left: 5px solid var(--accent-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.styled-list li:hover {
+    background-color: #e9ecef;
+    transform: translateX(5px);
+}
+
+.erd-diagram {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 30px auto;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-light);
+    border-radius: 8px;
+}
+
+.image-note {
+    text-align: center;
+    font-style: italic;
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.data-dictionary {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    border-radius: 8px;
+    overflow: hidden; /* Për të mbajtur border-radius */
+}
+
+.data-dictionary th, .data-dictionary td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+
+.data-dictionary th {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.data-dictionary tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-dictionary tbody tr:hover {
+    background-color: #e9ecef;
+    transform: scale(1.005); /* Efekt i lehtë zgjerimi */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.entity-name {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.table-responsive {
+    overflow-x: auto; /* Siguron që tabela të jetë responsive */
+    width: 100%;
+}
+
+.sql-code-block {
+    margin-bottom: 30px;
+}
+
+.sql-code-block h3 {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+pre {
+    background-color: #272822; /* Sfondi i errët i Prism.js Okaidia */
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+code {
+    font-family: 'Fira Code', 'Consolas', monospace; /* Fonti monospace për kod */
+    font-size: 0.95em;
+    color: #f8f8f2;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    margin-top: 40px;
+    box-shadow: 0 -4px 8px var(--shadow-medium);
+}
+
+/* Animacionet (fade-in) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInAnimation 0.8s ease-out forwards;
+}
+
+@keyframes fadeInAnimation {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Delay for sections */
+#hyrje { animation-delay: 0.1s; }
+#rregullat-biznesit { animation-delay: 0.3s; }
+#diagrama-erd { animation-delay: 0.5s; }
+#sql-shembujt { animation-delay: 0.7s; }
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .nav-link {
+        padding: 8px 12px;
+    }
+    .section-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .section-title {
+        font-size: 1.8em;
+    }
+    .data-dictionary th, .data-dictionary td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+    .school-logo {
+        height: 50px;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section-title {
+        font-size: 1.5em;
+    }
+}

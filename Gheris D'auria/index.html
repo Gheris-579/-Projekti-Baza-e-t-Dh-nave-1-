@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Baza e të Dhënave 1</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-content">
+        <div class="logo-area">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY7_5UDNpx196Qzu1Ncye9i_pf4aPQavVgFw&s" alt="Logoja e Shkollës" class="school-logo">
+            <h1>Baza e të Dhënave 1</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#hyrje" class="nav-link">Hyrje</a></li>
+                <li><a href="#rregullat-biznesit" class="nav-link">Rregullat e Biznesit</a></li>
+                <li><a href="#diagrama-erd" class="nav-link">Diagrama ERD & Fjalori</a></li>
+                <li><a href="#sql-shembujt" class="nav-link">Shembuj SQL</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="main-content">
+    <section id="hyrje" class="section-card fade-in">
+        <h2 class="section-title">Hyrje në Projekt</h2>
+        <p>Mirë se vini në faqen e projektit për lëndën "Baza e të Dhënave 1". Ky projekt, realizuar nga Aleandro Baci, synon të demonstrojë njohuritë dhe aftësitë e fituara në dizajn dhe implementim të bazave të të dhënave, duke u fokusuar në modelimin e një sistemi të menaxhimit të të dhënave për një entitet arsimor.</p>
+        <p>Përmes kësaj faqeje do të prezantohet struktura e bazës së të dhënave, rregullat e biznesit që e qeverisin atë, diagrama entitet-marrëdhënie (ERD) dhe fjalori i të dhënave, si dhe shembuj të pyetjeve SQL.</p>
+    </section>
+
+    <section id="rregullat-biznesit" class="section-card fade-in">
+        <h2 class="section-title">Rregullat e Biznesit</h2>
+        <p>Këtu janë renditur rregullat thelbësore të biznesit që përcaktojnë funksionalitetin, integritetin dhe konsistencën e bazës së të dhënave tonë. Këto rregulla janë zhvilluar për të siguruar saktësinë dhe përdorshmërinë e të dhënave në sistemin e menaxhimit të institucionit arsimor.</p>
+        <ul class="styled-list">
+            <li>Çdo student mund të regjistrohet në një ose më shumë kurse.</li>
+            <li>Çdo kurs ka vetëm një profesor përgjegjës.</li>
+            <li>Një profesor mund të japë mësim në disa kurse.</li>
+            <li>Një student ka një ID unike, emër, mbiemër dhe datë lindjeje.</li>
+            <li>Një kurs ka një kod unik, emër dhe numër kreditesh.</li>
+            <li>Shuma e krediteve të një studenti nuk mund të kalojë një limit të caktuar (p.sh., 30) në një semestër.</li>
+            <li>Një departament mund të ketë shumë profesorë dhe kurse.</li>
+            <li>Një profesor i përket vetëm një departamenti.</li>
+            <li>Një student ka një adresë primare (marrëdhënie 1:1 me Adresa).</li>
+            <li>Materialet e kursit lidhen me një kurs specifik (marrëdhënie 1:M).</li>
+        </ul>
+    </section>
+
+    <section id="diagrama-erd" class="section-card fade-in">
+        <h2 class="section-title">Diagrama ERD & Fjalori i Të Dhënave</h2>
+        <div class="erd-section-content">
+            <h3>Diagrama Entitet-Marrëdhënie (ERD)</h3>
+            <p>Kjo diagramë vizualizon strukturën e bazës së të dhënave duke treguar entitetet, atributet e tyre dhe marrëdhëniet mes tyre. Diagrama përmban 8 entitete dhe demonstron të treja llojet e marrëdhënieve: Një-me-Një (1:1), Një-me-Shumë (1:M) dhe Shumë-me-Shumë (M:N).</p>
+            <img src="diagramGD.svg" alt="Diagrama ERD e Projektit" class="erd-diagram">
+
+        </div>
+
+        <div class="data-dictionary-section">
+            <h3>Fjalori i Të Dhënave</h3>
+            <p>Fjalori i të dhënave ofron detaje për çdo entitet dhe atributet e tij, duke përfshirë tipin e të dhënave, përshkrimin dhe kufizimet (PRIMARY KEY, FOREIGN KEY, NOT NULL, UNIQUE, CHECK).</p>
+            <div class="table-responsive">
+                <table class="data-dictionary">
+                    <thead>
+                    <tr>
+                        <th>Entiteti</th>
+                        <th>Atributi</th>
+                        <th>Tipi i Të Dhënave</th>
+                        <th>Përshkrimi</th>
+                        <th>Kufizime</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="4" class="entity-name">Student</td>
+                        <td>StudentID</td>
+                        <td>INT</td>
+                        <td>Identifikues unik i studentit</td>
+                        <td>PRIMARY KEY, NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>Emri</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Emri i studentit</td>
+                        <td>NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>Mbiemri</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Mbiemri i studentit</td>
+                        <td>NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>DataLindjes</td>
+                        <td>DATE</td>
+                        <td>Data e lindjes së studentit</td>
+                        <td>NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4" class="entity-name">Profesor</td>
+                        <td>ProfesorID</td>
+                        <td>INT</td>
+                        <td>Identifikues unik i profesorit</td>
+                        <td>PRIMARY KEY, NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>Emri</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Emri i profesorit</td>
+                        <td>NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>Mbiemri</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Mbiemri i profesorit</td>
+                        <td>NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>DepartamentID</td>
+                        <td>INT</td>
+                        <td>ID e departamentit ku punon profesori</td>
+                        <td>FOREIGN KEY (Departament)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4" class="entity-name">Kurs</td>
+                        <td>KursID</td>
+                        <td>INT</td>
+                        <td>Identifikues unik i kursit</td>
+                        <td>PRIMARY KEY, NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>EmriKursit</td>
+                        <td>VARCHAR(100)</td>
+                        <td>Emri i kursit</td>
+                        <td>NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>Kredite</td>
+                        <td>INT</td>
+                        <td>Numri i krediteve të kursit</td>
+                        <td>NOT NULL, CHECK (Kredite > 0)</td>
+                    </tr>
+                    <tr>
+                        <td>ProfesorID</td>
+                        <td>INT</td>
+                        <td>ID e profesorit që jep mësim në këtë kurs</td>
+                        <td>FOREIGN KEY (Profesor)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="entity-name">Departament</td>
+                        <td>DepartamentID</td>
+                        <td>INT</td>
+                        <td>Identifikues unik i departamentit</td>
+                        <td>PRIMARY KEY, NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>EmriDepartamentit</td>
+                        <td>VARCHAR(100)</td>
+                        <td>Emri i departamentit</td>
+                        <td>NOT NULL, UNIQUE</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" class="entity-name">Regjistrimi</td>
+                        <td>RegjistrimID</td>
+                        <td>INT</td>
+                        <td>Identifikues unik i regjistrimit</td>
+                        <td>PRIMARY KEY, NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>StudentID</td>
+                        <td>INT</td>
+                        <td>ID e studentit të regjistruar</td>
+                        <td>FOREIGN KEY (Student)</td>
+                    </tr>
+                    <tr>
+                        <td>KursID</td>
+                        <td>INT</td>
+                        <td>ID e kursit në të cilin është regjistruar studenti</td>
+                        <td>FOREIGN KEY (Kurs), UNIQUE (StudentID, KursID)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" class="entity-name">Nota</td>
+                        <td>NotaID</td>
+                        <td>INT</td>
+                        <td>Identifikues unik i notës</td>
+                        <td>PRIMARY KEY, NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>RegjistrimID</td>
+                        <td>INT</td>
+                        <td>ID e regjistrimit të studentit në kurs</td>
+                        <td>FOREIGN KEY (Regjistrimi)</td>
+                    </tr>
+                    <tr>
+                        <td>VleraNote</td>
+                        <td>DECIMAL(3,2)</td>
+                        <td>Nota e marrë në kurs</td>
+                        <td>CHECK (VleraNote >= 4.0 AND VleraNote <= 10.0)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4" class="entity-name">Adresa</td>
+                        <td>AdresaID</td>
+                        <td>INT</td>
+                        <td>Identifikues unik i adresës</td>
+                        <td>PRIMARY KEY, NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>Rruga</td>
+                        <td>VARCHAR(100)</td>
+                        <td>Emri i rrugës</td>
+                        <td>NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>Qyteti</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Qyteti</td>
+                        <td>NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>Student_AdresaID</td>
+                        <td>INT</td>
+                        <td>ID e studentit të lidhur me këtë adresë</td>
+                        <td>FOREIGN KEY (Student), UNIQUE</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" class="entity-name">MaterialeKursi</td>
+                        <td>MaterialeID</td>
+                        <td>INT</td>
+                        <td>Identifikues unik i materialit</td>
+                        <td>PRIMARY KEY, NOT NULL</td>
+                    </tr>
+                    <tr>
+                        <td>KursID</td>
+                        <td>INT</td>
+                        <td>ID e kursit të lidhur me materialin</td>
+                        <td>FOREIGN KEY (Kurs)</td>
+                    </tr>
+                    <tr>
+                        <td>Titulli</td>
+                        <td>VARCHAR(200)</td>
+                        <td>Titulli i materialit (p.sh., PDF, link)</td>
+                        <td>NOT NULL</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="sql-shembujt" class="section-card fade-in">
+        <h2 class="section-title">Shembuj SQL</h2>
+        <p>Këtu janë disa shembuj të pyetjeve SQL për të manipuluar dhe rikthyer të dhëna nga baza jonë e të dhënave, duke demonstruar krijimin e tabelave, futjen e të dhënave dhe kryerjen e kërkesave komplekse.</p>
+
+        <div class="sql-code-block">
+            <h3>Krijimi i Tabelave (DDL - Data Definition Language)</h3>
+            <pre><code class="language-sql">
+CREATE TABLE Departament (
+    DepartamentID INT PRIMARY KEY,
+    EmriDepartamentit VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE Profesor (
+    ProfesorID INT PRIMARY KEY,
+    Emri VARCHAR(50) NOT NULL,
+    Mbiemri VARCHAR(50) NOT NULL,
+    DepartamentID INT NOT NULL,
+    FOREIGN KEY (DepartamentID) REFERENCES Departament(DepartamentID)
+);
+
+CREATE TABLE Kurs (
+    KursID INT PRIMARY KEY,
+    EmriKursit VARCHAR(100) NOT NULL,
+    Kredite INT NOT NULL CHECK (Kredite > 0),
+    ProfesorID INT,
+    FOREIGN KEY (ProfesorID) REFERENCES Profesor(ProfesorID)
+);
+
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Emri VARCHAR(50) NOT NULL,
+    Mbiemri VARCHAR(50) NOT NULL,
+    DataLindjes DATE NOT NULL
+);
+
+CREATE TABLE Adresa (
+    AdresaID INT PRIMARY KEY,
+    Rruga VARCHAR(100) NOT NULL,
+    Qyteti VARCHAR(50) NOT NULL,
+    Student_AdresaID INT UNIQUE,
+    FOREIGN KEY (Student_AdresaID) REFERENCES Student(StudentID)
+);
+
+CREATE TABLE Regjistrimi (
+    RegjistrimID INT PRIMARY KEY,
+    StudentID INT NOT NULL,
+    KursID INT NOT NULL,
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    FOREIGN KEY (KursID) REFERENCES Kurs(KursID),
+    UNIQUE (StudentID, KursID)
+);
+
+CREATE TABLE Nota (
+    NotaID INT PRIMARY KEY,
+    RegjistrimID INT NOT NULL,
+    VleraNote DECIMAL(3,2) NOT NULL CHECK (VleraNote >= 4.0 AND VleraNote <= 10.0),
+    FOREIGN KEY (RegjistrimID) REFERENCES Regjistrimi(RegjistrimID)
+);
+
+CREATE TABLE MaterialeKursi (
+    MaterialeID INT PRIMARY KEY,
+    KursID INT NOT NULL,
+    Titulli VARCHAR(200) NOT NULL,
+    URL_Materiali VARCHAR(255),
+    FOREIGN KEY (KursID) REFERENCES Kurs(KursID)
+);
+                </code></pre>
+        </div>
+
+        <div class="sql-code-block">
+            <h3>Popullimi i Tabelave (DML - INSERT Statements)</h3>
+            <pre><code class="language-sql">
+-- Popullimi i tabelës Departament
+INSERT INTO Departament (DepartamentID, EmriDepartamentit) VALUES
+(1, 'Shkenca Kompjuterike'),
+(2, 'Inxhinieri Elektronike'),
+(3, 'Matematikë'),
+(4, 'Fizikë');
+
+-- Popullimi i tabelës Profesor
+INSERT INTO Profesor (ProfesorID, Emri, Mbiemri, DepartamentID) VALUES
+(101, 'Prof. Ana', 'Doe', 1),
+(102, 'Dr. John', 'Smith', 2),
+(103, 'Prof. Elsa', 'Brown', 1),
+(104, 'Dr. Mark', 'Johnson', 3),
+(105, 'Prof. Laura', 'Williams', 4);
+
+-- Popullimi i tabelës Kurs
+INSERT INTO Kurs (KursID, EmriKursit, Kredite, ProfesorID) VALUES
+(201, 'Baza e të Dhënave', 6, 101),
+(202, 'Programim Web', 5, 103),
+(203, 'Sisteme Operative', 6, 101),
+(204, 'Rrjeta Kompjuterike', 6, 102),
+(205, 'Algoritma', 6, 103),
+(206, 'Kalkulus I', 5, 104),
+(207, 'Fizikë I', 5, 105);
+
+-- Popullimi i tabelës Student
+INSERT INTO Student (StudentID, Emri, Mbiemri, DataLindjes) VALUES
+(1, 'Era', 'Hoxha', '2003-05-15'),
+(2, 'Ledion', 'Ceka', '2002-11-22'),
+(3, 'Sara', 'Kola', '2003-01-01'),
+(4, 'Arbër', 'Daka', '2004-03-20'),
+(5, 'Ema', 'Lala', '2003-09-10');
+
+-- Popullimi i tabelës Adresa (marrëdhënie 1:1 me Student)
+INSERT INTO Adresa (AdresaID, Rruga, Qyteti, Student_AdresaID) VALUES
+(1001, 'Rruga e Durrësit 10', 'Tiranë', 1),
+(1002, 'Bulevardi Dëshmorët e Kombit 5', 'Tiranë', 2),
+(1003, 'Sheshi Skënderbej 1', 'Tiranë', 3),
+(1004, 'Rruga e Kavajës 55', 'Durrës', 4);
+
+-- Popullimi i tabelës Regjistrimi (M:N marrëdhënie Student-Kurs)
+INSERT INTO Regjistrimi (RegjistrimID, StudentID, KursID) VALUES
+(1, 1, 201),
+(2, 1, 202),
+(3, 2, 201),
+(4, 3, 203),
+(5, 3, 205),
+(6, 4, 202),
+(7, 5, 206),
+(8, 5, 207);
+
+-- Popullimi i tabelës Nota
+INSERT INTO Nota (NotaID, RegjistrimID, VleraNote) VALUES
+(1, 1, 8.5),
+(2, 2, 9.0),
+(3, 3, 7.0),
+(4, 4, 9.5),
+(5, 5, 8.0),
+(6, 6, 7.5),
+(7, 7, 9.0),
+(8, 8, 8.8);
+
+-- Popullimi i tabelës MaterialeKursi
+INSERT INTO MaterialeKursi (MaterialeID, KursID, Titulli, URL_Materiali) VALUES
+(1, 201, 'Prezantimi i Baza e të Dhënave', 'http://example.com/bd_intro.pdf'),
+(2, 201, 'Ushtrime SQL', 'http://example.com/bd_ushtrime.pdf'),
+(3, 202, 'HTML & CSS Basics', 'http://example.com/web_basics.pdf'),
+(4, 203, 'Ligjërata Sisteme Operative Kap.1', NULL),
+(5, 204, 'Koncepte Rrjetash', 'http://example.com/rrjetat_koncepte.pdf');
+                </code></pre>
+        </div>
+
+        <div class="sql-code-block">
+            <h3>Pyetjet e Të Dhënave (DML - SELECT Statements)</h3>
+            <pre><code class="language-sql">
+-- 1. Gjej të gjithë studentët:
+SELECT * FROM Student;
+
+-- 2. Gjej emrin dhe mbiemrin e studentëve që janë regjistruar në kursin 'Baza e të Dhënave':
+SELECT S.Emri, S.Mbiemri
+FROM Student S
+JOIN Regjistrimi R ON S.StudentID = R.StudentID
+JOIN Kurs K ON R.KursID = K.KursID
+WHERE K.EmriKursit = 'Baza e të Dhënave';
+
+-- 3. Gjej profesorët dhe departamentet e tyre:
+SELECT P.Emri, P.Mbiemri, D.EmriDepartamentit
+FROM Profesor P
+JOIN Departament D ON P.DepartamentID = D.DepartamentID;
+
+-- 4. Llogarit notën mesatare për çdo kurs:
+SELECT K.EmriKursit, AVG(N.VleraNote) AS NotaMesatare
+FROM Kurs K
+JOIN Regjistrimi R ON K.KursID = R.KursID
+JOIN Nota N ON R.RegjistrimID = N.RegjistrimID
+GROUP BY K.EmriKursit
+ORDER BY NotaMesatare DESC;
+
+-- 5. Gjej studentët që kanë notë mbi 8.5 në ndonjë kurs:
+SELECT DISTINCT S.Emri, S.Mbiemri
+FROM Student S
+JOIN Regjistrimi R ON S.StudentID = R.StudentID
+JOIN Nota N ON R.RegjistrimID = N.RegjistrimID
+WHERE N.VleraNote > 8.5;
+
+-- 6. Gjej të gjitha kurset e dhëna nga Profesori Ana Doe:
+SELECT K.EmriKursit, K.Kredite
+FROM Kurs K
+JOIN Profesor P ON K.ProfesorID = P.ProfesorID
+WHERE P.Emri = 'Prof. Ana' AND P.Mbiemri = 'Doe';
+
+-- 7. Gjej numrin e studentëve për çdo departament:
+SELECT D.EmriDepartamentit, COUNT(DISTINCT S.StudentID) AS NumriStudenteve
+FROM Departament D
+JOIN Profesor P ON D.DepartamentID = P.DepartamentID
+JOIN Kurs K ON P.ProfesorID = K.ProfesorID
+JOIN Regjistrimi R ON K.KursID = R.KursID
+JOIN Student S ON R.StudentID = S.StudentID
+GROUP BY D.EmriDepartamentit;
+
+-- 8. Gjej adresat e studentëve së bashku me emrat e tyre:
+SELECT S.Emri, S.Mbiemri, A.Rruga, A.Qyteti
+FROM Student S
+JOIN Adresa A ON S.StudentID = A.Student_AdresaID;
+
+-- 9. Gjej materialet e kursit për kursin 'Baza e të Dhënave':
+SELECT MK.Titulli, MK.URL_Materiali
+FROM MaterialeKursi MK
+JOIN Kurs K ON MK.KursID = K.KursID
+WHERE K.EmriKursit = 'Baza e të Dhënave';
+
+-- 10. Gjej studentët dhe notat e tyre për kursin 'Programim Web':
+SELECT S.Emri, S.Mbiemri, N.VleraNote
+FROM Student S
+JOIN Regjistrimi R ON S.StudentID = R.StudentID
+JOIN Kurs K ON R.KursID = K.KursID
+JOIN Nota N ON R.RegjistrimID = N.RegjistrimID
+WHERE K.EmriKursit = 'Programim Web';
+                </code></pre>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2025 Projekti Baza e të Dhënave 1 - Gheris D'Auria</p>
+</footer>
+
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>
