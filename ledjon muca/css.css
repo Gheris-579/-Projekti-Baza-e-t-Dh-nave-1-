@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.school-logo {
+    height: 80px; /* Rregullo lartësinë sipas logos tënde */
+    width: auto;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #555;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #777;
+}
+
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.section-content {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.section-content:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #555;
+    margin-top: 30px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.erd-diagram {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.data-dictionary {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.data-dictionary th, .data-dictionary td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.data-dictionary th {
+    background-color: #007bff;
+    color: white;
+}
+
+.data-dictionary tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+pre {
+    background-color: #eee;
+    padding: 15px;
+    border-left: 3px solid #007bff;
+    overflow-x: auto;
+    border-radius: 4px;
+}
+
+code {
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 30px;
+}
+
+/* Stilimi për Prism.js (Syntax Highlighting) */
+/* Mund të shkarkosh një temë Prism.js ose të përdorësh CDN */
+/* Për shembull, tema Okaidia */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css');
+
+/* Stilim shtesë për numrat e rreshtave në Prism.js */
+.line-numbers .line-numbers-rows {
+    border-right-color: #555;
+}
